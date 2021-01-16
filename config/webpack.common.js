@@ -7,29 +7,28 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 module.exports = {
-  mode: "development",
   entry: {
     index: {
-      import: "./src/index.js",
+      import: "../src/index.js",
       dependOn: "shared",
     },
-    print: "./src/print.js",
+    print: "../src/print.js",
     codeSplit: {
-      import: "./src/code_split.js",
+      import: "../src/code_split.js",
       dependOn: "shared",
     },
     shared: "lodash",
   },
   output: {
     filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
   },
   module: {
     rules: [
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
-        include: path.resolve(__dirname, "src"),
+        include: path.resolve(__dirname, "../src"),
         use: {
           loader: "babel-loader",
           options: {
@@ -92,12 +91,6 @@ module.exports = {
         },
       },
     },
-  },
-  devtool: "inline-source-map",
-  devServer: {
-    hot: true,
-    contentBase: "./dist",
-    publicPath: "/",
   },
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
