@@ -11,6 +11,10 @@ console.log("yaml ", yaml);
 console.log("json ", json);
 console.log("csv ", Data);
 console.log("xml ", Notes);
+console.log(
+  `%cLooks like we are in ${process.env.NODE_ENV} mode!`,
+  `color: yellow; font-size: 2rem;`
+);
 
 const gettingStarted = () => {
   let element = document.createElement("div");

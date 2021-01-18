@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require("path");
 const toml = require("toml");
 const yaml = require("yamljs");
@@ -9,12 +10,12 @@ const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 module.exports = {
   entry: {
     index: {
-      import: "../src/index.js",
+      import: "./src/index.js",
       dependOn: "shared",
     },
-    print: "../src/print.js",
+    print: "./src/print.js",
     codeSplit: {
-      import: "../src/code_split.js",
+      import: "./src/code_split.js",
       dependOn: "shared",
     },
     shared: "lodash",
@@ -97,6 +98,9 @@ module.exports = {
     new WebpackManifestPlugin(),
     new HtmlWebpackPlugin({
       title: "Angular Starter 2021 - Dev",
+    }),
+    new webpack.ProvidePlugin({
+      _: "lodash",
     }),
   ],
 };
