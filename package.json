@@ -8,10 +8,10 @@
     "watch": "webpack --watch",
     "start": "webpack serve --open --config config/webpack.dev.js",
     "start:local": "webpack serve --host 0.0.0.0 --watch-poll",
-    "server": "node config/server.js",
-    "dev:server": "node config/dev-server.js",
-    "build": "webpack --config config/webpack.dev.js",
-    "build:prod": "webpack --env NODE_ENV=local --env production --progress"
+    "build:dev": "webpack --config config/webpack.dev.js",
+    "build:local": "webpack --env NODE_ENV=local --env production --progress",
+    "serve:build:local": "npm run build:prod && node config/server.js",
+    "serve:dev:local": "node config/dev-server.js"
   },
   "repository": {
     "type": "git",
